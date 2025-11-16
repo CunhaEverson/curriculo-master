@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/developer.png" />
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 
 </head>
@@ -296,13 +296,30 @@
     <script src="exp.json"> </script>
 
     <!-- QR CODE-->
+    <div id="qrcode"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        new QRCode(document.getElementById("qrcode-curriculo"), {
-            text: "https://curriculo-everson.netlify.app/curriculo-everson.pdf",
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://curriculo-everson.netlify.app/",
             width: 200,
             height: 200
         });
     </script>
+    <script>
+        window.onload = function () {
+        const element = document.getElementById('conteudo');
+        const opt = {
+            margin:       0,
+            filename:     'Curriculo_Everson_Cunha.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        
+        html2pdf().set(opt).from(element).save();
+        };
+    </script>
+
 
 
 
