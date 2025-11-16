@@ -304,20 +304,23 @@
         });
     </script>
     <script>
-        window.onload = function () {
-        const element = document.getElementById('container');
-        const opt = {
-            margin:       0,
-            filename:     'Curriculo_Everson_Cunha.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
         
-        html2pdf().set(opt).from(element).save();
-        };
 </script>
 
+<script>
+  window.addEventListener('load', function () {
+    const element = document.body; 
+    const opt = {
+      margin: 0.5,
+      filename: 'Curriculo_Everson_Cunha.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+  });
+</script>
 
 </body>
 
