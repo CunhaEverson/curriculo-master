@@ -296,33 +296,51 @@
     <script src="js/script.js"> </script>
     <script src="exp.json"> </script>
 
-    <!-- QR CODE-->
-    <script>
-        new QRCode(document.getElementById("qrcode-curriculo"), {
-            text: "https://curriculo-everson.netlify.app/?pdf=true",
-            width: 200,
-            height: 200
-        });
-    </script>
+    
+    <!-- QR CODE + Geração automática do PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         window.addEventListener('load', function () {
+            // QR Code para download por URL direta
+            new QRCode(document.getElementById("qrcode-curriculo"), {
+                text: window.location.origin + "/?pdf=true",
+                width: 200,
+                height: 200
+            });
+
+            // Verifica se o parâmetro ?pdf=true foi passado
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('pdf') === 'true') {
+                console.log("🔄 Gerando PDF automaticamente...");
+
                 const element = document.body;
                 const opt = {
-                    margin: 0.3,
-                    filename: 'Curriculo_Everson.pdf',
-                    image: { type: 'jpeg', quality: 0.95 },
+                    margin: 0.2,
+                    filename: 'Curriculo_Everson_Cunha.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: { scale: 2 },
                     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
                 };
-                // Aguarda 1 segundo para carregar tudo antes de gerar o PDF
+
+                // Aguarda tudo carregar (fonts, imagens, layout)
                 setTimeout(() => {
-                    html2pdf().set(opt).from(element).save();
-                }, 1000);
+                    html2pdf()
+                        .set(opt)
+                        .from(element)
+                        .save()
+                        .then(() => {
+                            console.log("📄 PDF gerado com sucesso!");
+                            // Fecha a aba automaticamente após gerar o PDF
+                            window.close();
+                        })
+                        .catch(err => {
+                            console.error("Erro ao gerar o PDF:", err);
+                        });
+                }, 1500);
             }
         });
     </script>
+
 
 </body>
 
