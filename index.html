@@ -10,29 +10,21 @@
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/developer.png" />
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-
 </head>
 
 <body id="texto" style="font-size: 16px;">
-     
+    
     <div class="container">
         <div class="hero">
             <h1 class="name"><strong>Everson</strong> Cunha</h1>
             <a target="_blank" href="https://github.com/CunhaEverson">
                 <p class="job-title">Desenvolvedor</p>
             </a>
-            <p class="address">Rua Guarulhos, 121 - Barra de Jangada, Joboatão dos Guararapes - PE</p>
-
+            <p class="address">Rua Guarulhos, 121 - Barra de Jangada, Jaboatão dos Guararapes - PE</p>
             <p class="email">eversonflp45@gmail.com</p>
-            <p class="cp">CEP: 54.495-100</p>
-            <p class="phone">+55 81 9 979152 5239</p>
+            <p class="phone">+55 81 9 9791-5239</p>
             <p class="age">33 anos</p>
-
-
-
-            <h2 class="lead" id="subTitle">Analista e Desenvolvedor de Sistemas web para pequenos negócios e empresas de grande porte</h2>
+            <h2 class="lead" id="subTitle">Analista e Desenvolvedor de Sistemas web</h2>
         </div>
     </div>
 
@@ -266,82 +258,60 @@
 
     <footer class="container">
         <p style="font-size: 16px; margin-top: 0;">
-            Desenvolvido por <a href="https://www.linkedin.com/in/everson-cunha-97096b1b3/">Everson</a></p>
-
-        <div class="switch__container">
-            <p>Modo noturno</p>
-            <input id="switch-shadow" class="switch switch--shadow" type="checkbox">
-            <label for="switch-shadow"></label>
+            Desenvolvido por <a href="https://www.linkedin.com/in/everson-cunha-97096b1b3/">Everson</a>
+        </p>
+        <div class="switch__container"> 
+            <p>Modo noturno</p> 
+            <input id="switch-shadow" class="switch switch--shadow" type="checkbox"> <label for="switch-shadow"></label>
         </div>
-
         <div class="switch__fontSize">
-           
-
             <button onclick="aumentarTamanhoLetra()">Aumentar</button>
             <button onclick="diminuirTamanhoLetra()">Diminuir</button>
-
         </div>
+
         <div style="margin-top: 50px;">
             <h3>Baixe meu currículo:</h3>
             <div id="qrcode-curriculo"></div>
-            <p>Escaneie o QR Code para baixar o currículo em PDF</p>
+            <p>Escaneie para gerar o PDF automaticamente</p>
         </div>
-
-
     </footer>
 
+    <!-- QR CODE -->
+    <script>
+        new QRCode(document.getElementById("qrcode-curriculo"), {
+            text: "https://curriculo-everson.netlify.app/?pdf=true",
+            width: 200,
+            height: 200
+        });
+    </script>
 
-
-
-    <script src="js/script.js"> </script>
-    <script src="exp.json"> </script>
-
-    
-    <!-- QR CODE + Geração automática do PDF -->
+    <!-- Biblioteca para gerar PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Script de geração de PDF -->
     <script>
         window.addEventListener('load', function () {
-            // QR Code para download por URL direta
-            new QRCode(document.getElementById("qrcode-curriculo"), {
-                text: window.location.origin + "/?pdf=true",
-                width: 200,
-                height: 200
-            });
-
-            // Verifica se o parâmetro ?pdf=true foi passado
             const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('pdf') === 'true') {
-                console.log("🔄 Gerando PDF automaticamente...");
 
+            if (urlParams.get('pdf') === 'true') {
                 const element = document.body;
                 const opt = {
-                    margin: 0.2,
+                    margin: 0.5,
                     filename: 'Curriculo_Everson_Cunha.pdf',
                     image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: { scale: 2 },
                     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
                 };
 
-                // Aguarda tudo carregar (fonts, imagens, layout)
                 setTimeout(() => {
                     html2pdf()
                         .set(opt)
                         .from(element)
                         .save()
-                        .then(() => {
-                            console.log("📄 PDF gerado com sucesso!");
-                            // Fecha a aba automaticamente após gerar o PDF
-                            window.close();
-                        })
-                        .catch(err => {
-                            console.error("Erro ao gerar o PDF:", err);
-                        });
-                }, 1500);
+                        .then(() => window.close());
+                }, 1000);
             }
         });
     </script>
-
-
 </body>
-
 </html>
