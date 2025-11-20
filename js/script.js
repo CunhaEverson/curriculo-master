@@ -45,24 +45,45 @@ async function carregarDados() {
   loadData('relevantCompany1.5', dadosExperiencia.first.cargo);
   loadData('relevantCompany1.6', dadosExperiencia.first.cargo);
   loadData('relevantCompany1.7', dadosExperiencia.first.cargo);
-  loadData('relevantSkills1', dadosExperiencia.first.atribuicoes);
+    loadData('relevantSkills1', dadosExperiencia.first.atribuicoes);
     loadData('relevantSkills1.2', dadosExperiencia.first.atribuicoes);
     loadData('relevantSkills1.3', dadosExperiencia.first.atribuicoes);
     loadData('relevantSkills1.4', dadosExperiencia.first.atribuicoes);
     loadData('relevantSkills1.5', dadosExperiencia.first.atribuicoes);
     loadData('relevantSkills1.6', dadosExperiencia.first.atribuicoes);
+    loadData('relevantSkills1.7', dadosExperiencia.first.atribuicoes);
 
 
-
-  loadData('relevantTime2', dadosExperiencia.second.tempo);
+  
   loadData('relevantPosition2', dadosExperiencia.second.empresa);
+  loadData('relevantTime2', dadosExperiencia.second.tempo);
+  loadData('relevantTime2.1', dadosExperiencia.second.tempo);
+  loadData('relevantTime2.2', dadosExperiencia.second.tempo);
+  loadData('relevantTime2.3', dadosExperiencia.second.tempo);
+  loadData('relevantTime2.4', dadosExperiencia.second.tempo);
+  loadData('relevantTime2.5', dadosExperiencia.second.tempo);
   loadData('relevantCompany2', dadosExperiencia.second.cargo);
+  loadData('relevantCompany2.1', dadosExperiencia.second.cargo);
+  loadData('relevantCompany2.2', dadosExperiencia.second.cargo);
+  loadData('relevantCompany2.3', dadosExperiencia.second.cargo);
+  loadData('relevantCompany2.4', dadosExperiencia.second.cargo);
+  loadData('relevantCompany2.5', dadosExperiencia.second.cargo);
   loadData('relevantSkills2', dadosExperiencia.second.atribuicoes);
+  loadData('relevantSkills2.1', dadosExperiencia.second.atribuicoes);
+  loadData('relevantSkills2.2', dadosExperiencia.second.atribuicoes);
+  loadData('relevantSkills2.3', dadosExperiencia.second.atribuicoes);
+  loadData('relevantSkills2.4', dadosExperiencia.second.atribuicoes);
+  loadData('relevantSkills2.5', dadosExperiencia.second.atribuicoes);
 
   loadData('relevantTime3', dadosExperiencia.third.tempo);
   loadData('relevantPosition3', dadosExperiencia.third.empresa);
   loadData('relevantCompany3', dadosExperiencia.third.cargo);
   loadData('relevantSkills3', dadosExperiencia.third.atribuicoes);
+
+  loadData('relevantTime4', dadosExperiencia.second.tempo);
+  loadData('relevantPosition4', dadosExperiencia.second.empresa);
+  loadData('relevantCompany4', dadosExperiencia.second.cargo);
+  loadData('relevantSkills4', dadosExperiencia.second.atribuicoes);
 
   // ======= HABILIDADES =======
   loadData('language1', dadosHabilidades.first.linguagem);
